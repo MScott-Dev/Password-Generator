@@ -51,10 +51,12 @@ function writePassword() {
       // Checks if only one was selected
     } else if ((lowercase === true) && (uppercase === false) && (numeric === false) && (special === false)) {
         for(var i=0; i < characters; i++) {
-          newOption = option1;
+          var newOption = option1;
           function shuffle(newOption) {
-            newOption.sort(() => Math.random() - 0.5)
+            return newOption.sort(() => Math.random() -0.5);
           }
+          shuffle(newOption);
+          newOption = option1;
           var picker = Math.floor(Math.random() * characters);
           var newPassword = newOption[picker];
           newPass.push(newPassword);
@@ -64,6 +66,11 @@ function writePassword() {
         
     } else if ((lowercase === false) && (uppercase === true) && (numeric === false) && (special === false)) {
       for(var i=0; i < characters; i++) {
+        var newOption = option2;
+          function shuffle(newOption) {
+            return newOption.sort(() => Math.random() -0.5);
+          }
+          shuffle(newOption);
         var picker = Math.floor(Math.random() * characters);
         var newPassword = option2[picker];
         newPass.push(newPassword);
@@ -73,6 +80,11 @@ function writePassword() {
 
     }  else if ((lowercase === false) && (uppercase === false) && (numeric === true) && (special === false)) {
       for(var i=0; i < characters; i++) {
+        var newOption = option3;
+          function shuffle(newOption) {
+            return newOption.sort(() => Math.random() -0.5);
+          }
+          shuffle(newOption);
         var picker = Math.floor(Math.random() * characters);
         var newPassword = option3[picker];
         newPass.push(newPassword);
@@ -82,6 +94,11 @@ function writePassword() {
 
     } else if ((lowercase === false) && (uppercase === false) && (numeric === false) && (special === true)) {
       for(var i=0; i < characters; i++) {
+        var newOption = option4;
+          function shuffle(newOption) {
+            return newOption.sort(() => Math.random() -0.5);
+          }
+          shuffle(newOption);
         var picker = Math.floor(Math.random() * characters);
         var newPassword = option4[picker];
         newPass.push(newPassword);
@@ -93,6 +110,10 @@ function writePassword() {
     } else if ((lowercase === true) && (uppercase === true) && (numeric === false) && (special === false)) {
       var newOption = option1.concat(option2);
       for(var i=0; i < characters; i++) {
+        function shuffle(newOption) {
+          return newOption.sort(() => Math.random() -0.5);
+        }
+        shuffle(newOption);
         var picker = Math.floor(Math.random() * characters);
         var newPassword = newOption[picker];
         newPass.push(newPassword);
