@@ -19,15 +19,6 @@ function writePassword() {
     var alphabetUp = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
     var numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0",]
     var other = ["!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "]", "^", "_", "`", "{", "|", "}", "~", "\\"]
-    var newOption1 = [];
-    var newOption2 = [];
-    var newOption3 = [];
-    var newOption4 = [];
-
-    
-    
-    
-    // var picker = Math.floor(Math.random() * newOption.length);
 
     var newPass = [];
 
@@ -45,27 +36,23 @@ function writePassword() {
     }
     
     // Adds options the user selects
+    var list = [];
     
     if (lowercase === true) {
-      newOption1 = [].concat(alphabetLow);
+      list = list.concat(alphabetLow);
     } 
      
     if (uppercase === true) {
-      newOption2 = [].concat(alphabetUp);
+      list = list.concat(alphabetUp);
     }
 
     if (numeric === true) {
-      newOption3 = [].concat(numbers);
+      list = list.concat(numbers);
     }
 
     if (special === true) {
-      newOption4 = [].concat(other);
+      list = list.concat(other);
     }
-
-
-    // Conbines content into a single array
-
-    var list = [].concat(newOption1, newOption2, newOption3, newOption4);
 
     // Shuffles and pick random characters from the selected list
 
