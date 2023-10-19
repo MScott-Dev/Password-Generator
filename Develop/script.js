@@ -15,27 +15,22 @@ function writePassword() {
     var numeric = window.confirm("Do you want to include numeric values?");
     var special = window.confirm("Do you want to include special characters?");
 
-    // Can remove after finsihed
-    console.log(characters);
-    console.log(lowercase);
-    console.log(uppercase);
-    console.log(numeric);
-    console.log(special);
-
     var alphabetLow = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
     var alphabetUp = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
     var numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0",]
     var other = ["!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "]", "^", "_", "`", "{", "|", "}", "~", "\\"]
+    var newOption1 = [];
+    var newOption2 = [];
+    var newOption3 = [];
+    var newOption4 = [];
 
-    var option1 = alphabetLow;
-    var option2 = alphabetUp;
-    var option3 = numbers;
-    var option4 = other;
+    
+    
+    
+    // var picker = Math.floor(Math.random() * newOption.length);
 
     var newPass = [];
 
-    // var picker = Math.floor(Math.random() * characters);
-    
     // Checks characters size requirements
 
     if (characters < 8) {
@@ -47,85 +42,49 @@ function writePassword() {
     } else if ((lowercase === false) && (uppercase === false) && (numeric === false) && (special === false)) {
       window.confirm("We can't have a blank password! We need atleast 1 option selected!")
       return
-
-      // Checks if only one was selected
-    } else if ((lowercase === true) && (uppercase === false) && (numeric === false) && (special === false)) {
-        for(var i=0; i < characters; i++) {
-          var newOption = option1;
-          function shuffle(newOption) {
-            return newOption.sort(() => Math.random() -0.5);
-          }
-          shuffle(newOption);
-          newOption = option1;
-          var picker = Math.floor(Math.random() * characters);
-          var newPassword = newOption[picker];
-          newPass.push(newPassword);
-          
-        }
-        return newPass.join("");
-        
-    } else if ((lowercase === false) && (uppercase === true) && (numeric === false) && (special === false)) {
-      for(var i=0; i < characters; i++) {
-        var newOption = option2;
-          function shuffle(newOption) {
-            return newOption.sort(() => Math.random() -0.5);
-          }
-          shuffle(newOption);
-        var picker = Math.floor(Math.random() * characters);
-        var newPassword = option2[picker];
-        newPass.push(newPassword);
-        
-      }
-      return newPass.join("");
-
-    }  else if ((lowercase === false) && (uppercase === false) && (numeric === true) && (special === false)) {
-      for(var i=0; i < characters; i++) {
-        var newOption = option3;
-          function shuffle(newOption) {
-            return newOption.sort(() => Math.random() -0.5);
-          }
-          shuffle(newOption);
-        var picker = Math.floor(Math.random() * characters);
-        var newPassword = option3[picker];
-        newPass.push(newPassword);
-        
-      }
-      return newPass.join("");
-
-    } else if ((lowercase === false) && (uppercase === false) && (numeric === false) && (special === true)) {
-      for(var i=0; i < characters; i++) {
-        var newOption = option4;
-          function shuffle(newOption) {
-            return newOption.sort(() => Math.random() -0.5);
-          }
-          shuffle(newOption);
-        var picker = Math.floor(Math.random() * characters);
-        var newPassword = option4[picker];
-        newPass.push(newPassword);
-        
-      }
-      return newPass.join("");
-
-      // Checks if two are selected
-    } else if ((lowercase === true) && (uppercase === true) && (numeric === false) && (special === false)) {
-      var newOption = option1.concat(option2);
-      for(var i=0; i < characters; i++) {
-        function shuffle(newOption) {
-          return newOption.sort(() => Math.random() -0.5);
-        }
-        shuffle(newOption);
-        var picker = Math.floor(Math.random() * characters);
-        var newPassword = newOption[picker];
-        newPass.push(newPassword);
-        
-      }
-      return newPass.join("");
-
-     
-
     }
+    
+    // Adds options the user selects
+    
+    if (lowercase === true) {
+      newOption1 = [].concat(alphabetLow);
+    } 
+     
+    if (uppercase === true) {
+      newOption2 = [].concat(alphabetUp);
+    }
+
+    if (numeric === true) {
+      newOption3 = [].concat(numbers);
+    }
+
+    if (special === true) {
+      newOption4 = [].concat(other);
+    }
+
+
+    // Conbines content into a single array
+
+    var list = [].concat(newOption1, newOption2, newOption3, newOption4);
+
+    // Shuffles and pick random characters from the selected list
+
+    for (var i = 0; i < characters; i++) {
+      function shuffle(list) {
+        return list.sort(() => Math.random() * list.length);
+      }
+      shuffle(list);
+      var picker = Math.floor(Math.random() * list.length);
+      var newPassword = list[picker];
+      newPass.push(newPassword);
+    }
+    return newPass.join("");
   }
 }
+
+    
+
+   
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
