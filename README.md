@@ -17,4 +17,20 @@ The quesions include:
 
 Generates a random password with different criteria.
 
+## Dependencies
+
+1. A web browser
+2. Internet
+3. <a href="https://mscott-dev.github.io/Password-Generator/" alt="passwrod generator website">A link to the webpage</a>
+
+## Installing
+N/A
+
+## Executing program
+
+Just click generate password and answer the questions!
+
+## Authors
+Matthew Scott
+
 
